@@ -15,11 +15,10 @@ const reviewRoutes = require('./routes/reviewRoutes')
 const serviceHistory = require('./routes/serviceHistoryRoutes')
 const db = require('./config/db');
 db();
-app.use(cors({
-    origin: 'http://localhost:5173'
-}));
+app.use(cors());
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/users',userRoutes)
 app.use('/vehicles', vehicleRoutes);
