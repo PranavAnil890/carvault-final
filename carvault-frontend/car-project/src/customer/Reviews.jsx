@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 const Reviews = () => {
     const [services, setServices] = useState([]);
@@ -17,7 +17,7 @@ const Reviews = () => {
     // Get services
     const getServices = async () => {
         try {
-            const response = await axios.get(
+            const response = await axiosInstance.get(
                 '/services'
             );
             setServices(response.data);
@@ -29,7 +29,7 @@ const Reviews = () => {
     // Get bookings
     const getBookings = async () => {
         try {
-            const response = await axios.get(
+            const response = await axiosInstance.get(
                 '/booking'
             );
             setBookings(response.data);
@@ -41,7 +41,7 @@ const Reviews = () => {
     // Get my reviews
     const getReviews = async () => {
         try {
-            const response = await axios.get(
+            const response = await axiosInstance.get(
                 '/review'
             );
 
@@ -119,7 +119,7 @@ const Reviews = () => {
                     ? booking.serviceCenterId?._id
                     : booking.serviceCenterId;
 
-            await axios.post(
+            await axiosInstance.post(
                 '/review',
                 {
                     userId: userId,

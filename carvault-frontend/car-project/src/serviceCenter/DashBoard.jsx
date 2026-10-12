@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 const DashBoard = () => {
 
@@ -11,7 +11,7 @@ const DashBoard = () => {
     useEffect(() => {
 
         // Get services
-        axios.get('/services')
+        axiosInstance.get('/services')
             .then((response) => {
 
                 const myServices = response.data.filter(
@@ -29,7 +29,7 @@ const DashBoard = () => {
 
 
         // Get bookings
-        axios.get('/booking')
+        axiosInstance.get('/booking')
             .then((response) => {
 
                 const myBookings = response.data.filter(

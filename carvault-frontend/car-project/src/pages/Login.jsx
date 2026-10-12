@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 import loginBg from '../assets/login-bg.png';
 
@@ -18,7 +18,7 @@ const Login = () => {
 
         try {
 
-            const response = await axios.post(
+            const response = await axiosInstance.post(
                 '/users/login',
                 {
                     email,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 const TimeSlots = () => {
 
@@ -18,7 +18,7 @@ const TimeSlots = () => {
 
         try {
 
-            const response = await axios.get(
+            const response = await axiosInstance.get(
                 '/time-slots'
             );
 
@@ -63,7 +63,7 @@ const TimeSlots = () => {
 
         try {
 
-            await axios.post(
+            await axiosInstance.post(
                 '/time-slots',
                 {
                     date: formData.date,
@@ -95,7 +95,7 @@ const TimeSlots = () => {
 
         try {
 
-            await axios.delete(
+            await axiosInstance.delete(
                 `/time-slots/${id}`
             );
 

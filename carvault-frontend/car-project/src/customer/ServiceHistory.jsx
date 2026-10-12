@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 const ServiceHistory = () => {
 
@@ -17,19 +17,19 @@ const ServiceHistory = () => {
 
         try {
 
-            const historyResponse = await axios.get(
+            const historyResponse = await axiosInstance.get(
                 '/service-history'
             );
 
-            const vehicleResponse = await axios.get(
+            const vehicleResponse = await axiosInstance.get(
                 '/vehicles'
             );
 
-            const serviceResponse = await axios.get(
+            const serviceResponse = await axiosInstance.get(
                 '/services'
             );
 
-            const centerResponse = await axios.get(
+            const centerResponse = await axiosInstance.get(
                 '/service-centers'
             );
 

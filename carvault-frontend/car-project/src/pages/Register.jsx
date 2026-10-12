@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
+
 
 import loginBg from '../assets/login-bg.png';
 
@@ -20,7 +21,7 @@ const Register = () => {
 
         try {
 
-            await axios.post(
+            await axiosInstance.post(
                 '/users/register',
                 {
                     name,

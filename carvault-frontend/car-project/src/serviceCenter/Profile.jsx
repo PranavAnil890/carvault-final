@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 const Profile = () => {
 
@@ -11,7 +11,7 @@ const Profile = () => {
     // Get profile
     useEffect(() => {
 
-        axios.get('/service-centers')
+        axiosInstance.get('/service-centers')
             .then((response) => {
 
                 const data = response.data.find(
@@ -44,7 +44,7 @@ const Profile = () => {
 
         try {
 
-            const response = await axios.put(
+            const response = await axiosInstance.put(
                 `/service-centers/${profile._id}`,
                 profile
             );

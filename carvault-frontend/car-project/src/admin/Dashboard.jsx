@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 const Dashboard = () => {
     const [customers, setCustomers] = useState(0);
@@ -29,12 +29,12 @@ const Dashboard = () => {
                 reviewsResponse,
                 vehiclesResponse
             ] = await Promise.all([
-                axios.get('/users'),
-                axios.get('/service-centers'),
-                axios.get('/services'),
-                axios.get('/booking'),
-                axios.get('/review'),
-                axios.get('/vehicles')
+                axiosInstance.get('/users'),
+                axiosInstance.get('/service-centers'),
+                axiosInstance.get('/services'),
+                axiosInstance.get('/booking'),
+                axiosInstance.get('/review'),
+                axiosInstance.get('/vehicles')
             ]);
 
             const customerUsers = customersResponse.data.filter(

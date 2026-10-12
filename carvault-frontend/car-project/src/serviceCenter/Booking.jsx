@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 const Booking = () => {
 
@@ -12,7 +12,7 @@ const Booking = () => {
 
         try {
 
-            const response = await axios.get(
+            const response = await axiosInstance.get(
                 '/booking'
             );
 
@@ -45,7 +45,7 @@ const Booking = () => {
 
         try {
 
-            await axios.put(
+            await axiosInstance.put(
                 `/booking/${id}`,
                 {
                     status: status
@@ -72,7 +72,7 @@ const Booking = () => {
 
         try {
 
-            await axios.delete(
+            await axiosInstance.delete(
                 `/booking/${id}`
             );
 

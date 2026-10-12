@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
@@ -10,10 +10,10 @@ const Reviews = () => {
 
     const getReviews = async () => {
         try {
-            const reviewRes = await axios.get('/review');
-            const userRes = await axios.get('/users');
-            const serviceRes = await axios.get('/services');
-            const centerRes = await axios.get('/service-centers');
+            const reviewRes = await axiosInstance.get('/review');
+            const userRes = await axiosInstance.get('/users');
+            const serviceRes = await axiosInstance.get('/services');
+            const centerRes = await axiosInstance.get('/service-centers');
 
             setReviews(reviewRes.data);
             setUsers(userRes.data);
@@ -36,7 +36,7 @@ const Reviews = () => {
         if (!window.confirm('Delete this review?')) return;
 
         try {
-            await axios.delete(`/review/${id}`);
+            await axiosInstance.delete(`/review/${id}`);
             alert('Review deleted');
             getReviews();
         } catch (error) {

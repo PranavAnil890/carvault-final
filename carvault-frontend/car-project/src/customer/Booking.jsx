@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const Booking = () => {
@@ -22,7 +22,7 @@ const Booking = () => {
 
         if (location.pathname === '/customer/bookings') {
 
-            axios.get('/booking')
+            axiosInstance.get('/booking')
                 .then(response => {
 
                     const data = response.data.filter(
@@ -46,7 +46,7 @@ const Booking = () => {
 
         if (location.pathname === '/customer/bookings/new') {
 
-            axios.get('/time-slots')
+            axiosInstance.get('/time-slots')
                 .then(response => {
 
                     const data = response.data.filter(
@@ -81,7 +81,7 @@ const Booking = () => {
 
         try {
 
-            await axios.post(
+            await axiosInstance.post(
                 '/booking',
                 {
                     userId: user.id,
@@ -94,7 +94,7 @@ const Booking = () => {
                 }
             );
 
-            await axios.put(
+            await axiosInstance.put(
                 `/time-slots/${slot._id}`,
                 {
                     isBooked: true

@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 const Services = () => {
     const [services, setServices] = useState([]);
@@ -14,11 +14,11 @@ const Services = () => {
 
     const getData = async () => {
         try {
-            const serviceResponse = await axios.get(
+            const serviceResponse = await axiosInstance.get(
                 '/services'
             );
 
-            const centerResponse = await axios.get(
+            const centerResponse = await axiosInstance.get(
                 '/service-centers'
             );
 
@@ -72,7 +72,7 @@ const Services = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.put(
+            const response = await axiosInstance.put(
                 `/services/${editId}`,
                 {
                     serviceName: formData.name,
@@ -115,7 +115,7 @@ const Services = () => {
         }
 
         try {
-            const response = await axios.delete(
+            const response = await axiosInstance.delete(
                 `/services/${id}`
             );
 

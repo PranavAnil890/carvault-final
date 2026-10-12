@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 import { useNavigate } from 'react-router-dom';
 
 const Vehicles = () => {
@@ -28,7 +28,7 @@ const Vehicles = () => {
 
         try {
 
-            const response = await axios.get(
+            const response = await axiosInstance.get(
                 '/vehicles'
             );
 
@@ -139,7 +139,7 @@ const Vehicles = () => {
 
             if (editId) {
 
-                await axios.put(
+                await axiosInstance.put(
                     `/vehicles/${editId}`,
                     vehicleData
                 );
@@ -148,7 +148,7 @@ const Vehicles = () => {
 
             } else {
 
-                await axios.post(
+                await axiosInstance.post(
                     '/vehicles',
                     vehicleData
                 );
@@ -182,7 +182,7 @@ const Vehicles = () => {
 
         try {
 
-            await axios.delete(
+            await axiosInstance.delete(
                 `/vehicles/${id}`
             );
 

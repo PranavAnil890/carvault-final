@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 const Customers = () => {
     const [customers, setCustomers] = useState([]);
@@ -9,7 +9,7 @@ const Customers = () => {
 
     const getCustomers = async () => {
         try {
-            const response = await axios.get(
+            const response = await axiosInstance.get(
                 '/users'
             );
 
@@ -49,7 +49,7 @@ const Customers = () => {
         }
 
         try {
-            const response = await axios.put(
+            const response = await axiosInstance.put(
                 `/users/${id}/deactivate`
             );
 
@@ -71,7 +71,7 @@ const Customers = () => {
 
     const activateCustomer = async (id) => {
         try {
-            const response = await axios.put(
+            const response = await axiosInstance.put(
                 `/users/${id}/activate`
             );
 
@@ -101,7 +101,7 @@ const Customers = () => {
         }
 
         try {
-            const response = await axios.delete(
+            const response = await axiosInstance.delete(
                 `/users/${id}`
             );
 

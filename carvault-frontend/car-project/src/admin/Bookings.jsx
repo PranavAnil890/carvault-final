@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 const Bookings = () => {
 
@@ -10,11 +10,11 @@ const Bookings = () => {
 
         try {
 
-            const bookingsResponse = await axios.get(
+            const bookingsResponse = await axiosInstance.get(
                 '/booking'
             );
 
-            const centersResponse = await axios.get(
+            const centersResponse = await axiosInstance.get(
                 '/service-centers'
             );
 

@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 const ServiceCenter = () => {
     const [centers, setCenters] = useState([]);
@@ -22,11 +22,11 @@ const ServiceCenter = () => {
 
     const getCenters = async () => {
         try {
-            const centerRes = await axios.get(
+            const centerRes = await axiosInstance.get(
                 '/service-centers'
             );
 
-            const reviewRes = await axios.get(
+            const reviewRes = await axiosInstance.get(
                 '/review'
             );
 
@@ -114,7 +114,7 @@ const ServiceCenter = () => {
 
         try {
             if (editId) {
-                await axios.put(
+                await axiosInstance.put(
                     `/service-centers/${editId}`,
                     {
                         name: formData.name.trim(),
@@ -155,7 +155,7 @@ const ServiceCenter = () => {
                     );
                 }
 
-                await axios.post(
+                await axiosInstance.post(
                     '/service-centers',
                     {
                         name: formData.name.trim(),
@@ -197,7 +197,7 @@ const ServiceCenter = () => {
         }
 
         try {
-            await axios.delete(
+            await axiosInstance.delete(
                 `/service-centers/${id}`
             );
 
@@ -229,7 +229,7 @@ const ServiceCenter = () => {
         if (!viewCenter) return;
 
         try {
-            await axios.put(
+            await axiosInstance.put(
                 `/service-centers/${viewCenter._id}/confirm-update`
             );
 

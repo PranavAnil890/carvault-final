@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 import { useNavigate } from 'react-router-dom';
 
 const ServiceCenters = () => {
@@ -20,7 +20,7 @@ const ServiceCenters = () => {
 
         try {
 
-            const response = await axios.get(
+            const response = await axiosInstance.get(
                 '/service-centers'
             );
 
@@ -41,7 +41,7 @@ const ServiceCenters = () => {
 
         try {
 
-            const response = await axios.get(
+            const response = await axiosInstance.get(
                 '/review'
             );
 
@@ -72,7 +72,7 @@ const ServiceCenters = () => {
 
         try {
 
-            const response = await axios.get(
+            const response = await axiosInstance.get(
                 '/services'
             );
 

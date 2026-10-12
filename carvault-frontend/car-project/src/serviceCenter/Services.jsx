@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 const Services = () => {
 
@@ -20,7 +20,7 @@ const Services = () => {
     // Get services
     const getServices = async () => {
         try {
-            const response = await axios.get(
+            const response = await axiosInstance.get(
                 '/services'
             );
 
@@ -101,7 +101,7 @@ const Services = () => {
 
         try {
             if (editId) {
-                await axios.put(
+                await axiosInstance.put(
                     `/services/${editId}`,
                     data
                 );
@@ -109,7 +109,7 @@ const Services = () => {
                 alert('Service updated successfully');
 
             } else {
-                await axios.post(
+                await axiosInstance.post(
                     '/services',
                     data
                 );
@@ -138,7 +138,7 @@ const Services = () => {
         }
 
         try {
-            await axios.delete(
+            await axiosInstance.delete(
                 `/services/${id}`
             );
 
